@@ -17,7 +17,7 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class CakeHandler extends DefaultHandler {
 
-    private String name, price, currentTagName, fromCookingTime, toCookingTime, firstname, lastname;
+    private String id, name, price, currentTagName, fromCookingTime, toCookingTime, firstname, lastname;
     private boolean found, foundAvailable, foundCookingTime;
     private CakeDTO cake;
     private List<CakeDTO> listCake;
@@ -62,7 +62,9 @@ public class CakeHandler extends DefaultHandler {
         if (!found) {
             String str = new String(ch, start, length);
             if (foundAvailable) {
-                if (currentTagName.equals("name")) {
+                if (currentTagName.equals("id")) {
+                    id = str.trim();
+                } else if (currentTagName.equals("name")) {
                     name = str.trim();
                 } else if (currentTagName.equals("price")) {
                     price = str.trim();
@@ -89,6 +91,7 @@ public class CakeHandler extends DefaultHandler {
                 if (listCake == null) {
                     listCake = new ArrayList<>();
                 }
+                cake.setCakeID(id);
                 cake.setName(name);
                 cake.setPrice(price);
                 cake.setFirstname(firstname);

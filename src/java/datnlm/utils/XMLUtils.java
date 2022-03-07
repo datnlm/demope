@@ -26,8 +26,10 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -144,4 +146,9 @@ public class XMLUtils {
         return reader;
     }
 
+    public static void parseFileToSAX(String filePath, DefaultHandler handler) throws Exception {
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+        SAXParser sax = spf.newSAXParser();
+        sax.parse(filePath, handler);
+    }
 }

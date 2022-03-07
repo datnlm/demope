@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CakeDTO", propOrder = {
     "id",
+    "cakeID",
     "name",
     "description",
     "quantity",
@@ -33,6 +34,9 @@ public class CakeDTO implements Serializable {
 
     @XmlElement(name = "id")
     private IdDTO id;
+    
+    @XmlAttribute(name = "cakeID")
+    private String cakeID;
     @XmlAttribute(name = "isAvailable")
     private String isAvailable;
     @XmlAttribute(name = "cookingTime")
@@ -70,6 +74,14 @@ public class CakeDTO implements Serializable {
 
     public IdDTO getId() {
         return id;
+    }
+
+    public String getCakeID() {
+        return cakeID;
+    }
+
+    public void setCakeID(String cakeID) {
+        this.cakeID = cakeID;
     }
 
     public void setId(IdDTO id) {
